@@ -64,7 +64,7 @@ class PDFManage
                 for ($i=1; $i<=$count; $i++) {
                     $template   = $fpdi->importPage($i);
                     $size       = $fpdi->getTemplateSize($template);
-
+                    $orientation = ($size['w'] < $size['h']) ? 'P' : 'L'; //auto-orientation
                     $fpdi->AddPage($fileorientation, array($size['w'], $size['h']));
                     $fpdi->useTemplate($template);
                 }
